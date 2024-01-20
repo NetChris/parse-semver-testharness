@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Parse GitHub ref
         id: parse
-        uses: NetChris/parse-semver@v0
+        uses: NetChris/parse-semver@11-output-nuget-microsoft-versions
         with:
           value_to_parse: 'unparseable'
           run_id: 12345
@@ -35,3 +35,7 @@ jobs:
         run: echo ${{ steps.parse.outputs.build_metadata }}
       - name: fallback_version
         run: echo ${{ steps.parse.outputs.fallback_version }}
+      - name: dotnet_assembly_version
+        run: echo ${{ steps.parse.outputs.dotnet_assembly_version }}
+      - name: nuget_version
+        run: echo ${{ steps.parse.outputs.nuget_version }}

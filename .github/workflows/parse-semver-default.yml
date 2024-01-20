@@ -11,7 +11,7 @@ jobs:
         run: echo "${{ github.ref }}"
       - name: Parse GitHub ref
         id: parse
-        uses: NetChris/parse-semver@v0
+        uses: NetChris/parse-semver@11-output-nuget-microsoft-versions
       - name: Output value_to_parse
         run: echo "${{ steps.parse.outputs.value_to_parse }}"
       - name: Has semver_version?
@@ -32,3 +32,7 @@ jobs:
         run: echo ${{ steps.parse.outputs.build_metadata }}
       - name: fallback_version
         run: echo ${{ steps.parse.outputs.fallback_version }}
+      - name: dotnet_assembly_version
+        run: echo ${{ steps.parse.outputs.dotnet_assembly_version }}
+      - name: nuget_version
+        run: echo ${{ steps.parse.outputs.nuget_version }}
