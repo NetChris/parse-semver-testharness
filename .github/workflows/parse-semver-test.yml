@@ -7,6 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     name: Parse GITHUB_REF_NAME for SemVer
     steps:
+      - name: Output github.ref
+        run: echo "${{ github.ref }}"
       - name: Parse GitHub ref
         id: parse
         uses: NetChris/parse-semver@5-make-parsing-find-the-first-occurrence-of-the-semver-pattern
