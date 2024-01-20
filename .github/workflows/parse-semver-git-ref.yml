@@ -11,7 +11,7 @@ jobs:
         run: echo "${{ github.ref }}"
       - name: Parse GitHub ref
         id: parse
-        uses: NetChris/parse-semver@c265c387fd19f3c8c00a3af5514d2e96cabe6885
+        uses: NetChris/parse-semver@5-make-parsing-find-the-first-occurrence-of-the-semver-pattern
         with:
           value_to_parse: '${{ github.ref }}'
       - name: Output full match
