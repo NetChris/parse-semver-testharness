@@ -1,4 +1,4 @@
-name: SemVer parse test - use default
+name: parse-semver test - use default
 
 on: [push]
 
