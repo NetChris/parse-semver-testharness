@@ -28,9 +28,9 @@ jobs:
         run: echo ${{ steps.parse.outputs.build_metadata }}
       - name: Output major_minor_version
         run: echo ${{ steps.parse.outputs.major_minor_version }}
+      - name: Has semver_version?
+        if: ${{ steps.parse.outputs.semver_version != '' }}
+        run: echo "${{ steps.parse.outputs.semver_version }}"
       - name: Major/Minor detected?
         if: ${{ steps.parse.outputs.major_minor_version != '' }}
         run: echo "${{ steps.parse.outputs.major_minor_version }}"
-      - name: has_semver_version?
-        if: ${{ steps.parse.outputs.has_semver_version }}
-        run: echo "${{ steps.parse.outputs.has_semver_version }}"
