@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Parse GitHub ref
         id: parse
-        uses: NetChris/parse-semver@5-make-parsing-find-the-first-occurrence-of-the-semver-pattern
+        uses: NetChris/parse-semver@v0
         with:
           value_to_parse: 'v1.2.3'
       - name: Output value_to_parse
