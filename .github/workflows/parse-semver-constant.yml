@@ -1,0 +1,36 @@
+name: SemVer parse test - constant "v1.2.3"
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Parse GITHUB_REF_NAME for SemVer
+    steps:
+      - name: Output github.ref
+        run: echo "v1.2.3"
+      - name: Parse GitHub ref
+        id: parse
+        uses: NetChris/parse-semver@c265c387fd19f3c8c00a3af5514d2e96cabe6885
+        with:
+          value_to_parse: 'v1.2.3'
+      - name: Output full match
+        run: echo "${{ steps.parse.outputs.semver_version }}"
+      - name: Output major
+        run: echo ${{ steps.parse.outputs.major_version }}
+      - name: Output minor
+        run: echo ${{ steps.parse.outputs.minor_version }}
+      - name: Output patch
+        run: echo ${{ steps.parse.outputs.patch_version }}
+      - name: Output prerelease
+        run: echo ${{ steps.parse.outputs.pre_release_version }}
+      - name: Output buildmetadata
+        run: echo ${{ steps.parse.outputs.build_metadata }}
+      - name: Output major_minor_version
+        run: echo ${{ steps.parse.outputs.major_minor_version }}
+      - name: Major/Minor detected?
+        if: ${{ steps.parse.outputs.major_minor_version != '' }}
+        run: echo "${{ steps.parse.outputs.major_minor_version }}"
+      - name: has_semver_version?
+        if: ${{ steps.parse.outputs.has_semver_version }}
+        run: echo "${{ steps.parse.outputs.has_semver_version }}"
