@@ -11,7 +11,7 @@ jobs:
         id: parse
         uses: NetChris/parse-semver@5-make-parsing-find-the-first-occurrence-of-the-semver-pattern
         with:
-          value_to_parse: ${{ github.ref }}
+          value_to_parse: '${{ github.ref }}'
       - name: Output full match
         run: echo "${{ steps.parse.outputs.semver_version }}"
       - name: Output major
