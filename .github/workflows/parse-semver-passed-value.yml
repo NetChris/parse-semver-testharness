@@ -1,4 +1,4 @@
-name: SemVer parse test - constant "v1.2.3"
+name: SemVer parse test - passed value "v1.2.3"
 
 on: [push]
 
@@ -7,8 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     name: Parse GITHUB_REF_NAME for SemVer
     steps:
-      - name: Output github.ref
-        run: echo "v1.2.3"
       - name: Parse GitHub ref
         id: parse
         uses: NetChris/parse-semver@5-make-parsing-find-the-first-occurrence-of-the-semver-pattern
@@ -16,21 +14,19 @@ jobs:
           value_to_parse: 'v1.2.3'
       - name: Output value_to_parse
         run: echo "${{ steps.parse.outputs.value_to_parse }}"
-      - name: Output major
-        run: echo ${{ steps.parse.outputs.major_version }}
-      - name: Output minor
-        run: echo ${{ steps.parse.outputs.minor_version }}
-      - name: Output patch
-        run: echo ${{ steps.parse.outputs.patch_version }}
-      - name: Output prerelease
-        run: echo ${{ steps.parse.outputs.pre_release_version }}
-      - name: Output buildmetadata
-        run: echo ${{ steps.parse.outputs.build_metadata }}
-      - name: Output major_minor_version
-        run: echo ${{ steps.parse.outputs.major_minor_version }}
       - name: Has semver_version?
         if: ${{ steps.parse.outputs.semver_version != '' }}
         run: echo "${{ steps.parse.outputs.semver_version }}"
       - name: Major/Minor detected?
         if: ${{ steps.parse.outputs.major_minor_version != '' }}
         run: echo "${{ steps.parse.outputs.major_minor_version }}"
+      - name: Output major version
+        run: echo ${{ steps.parse.outputs.major_version }}
+      - name: Output minor version
+        run: echo ${{ steps.parse.outputs.minor_version }}
+      - name: Output SemVer patch component
+        run: echo ${{ steps.parse.outputs.patch_version }}
+      - name: Output SemVer prerelease component
+        run: echo ${{ steps.parse.outputs.pre_release_version }}
+      - name: Output SemVer buildmetadata component
+        run: echo ${{ steps.parse.outputs.build_metadata }}
