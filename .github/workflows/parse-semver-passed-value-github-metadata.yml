@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Parse GitHub ref
         id: parse
-        uses: NetChris/parse-semver@11-output-nuget-microsoft-versions
+        uses: NetChris/parse-semver@fdf7c91e3c241d139205239b3a48d3e0a530f64c
         with:
           value_to_parse: 'unparseable'
           run_id: 12345

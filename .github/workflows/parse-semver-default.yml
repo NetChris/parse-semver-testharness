@@ -11,7 +11,7 @@ jobs:
         run: echo "${{ github.ref }}"
       - name: Parse GitHub ref
         id: parse
-        uses: NetChris/parse-semver@11-output-nuget-microsoft-versions
+        uses: NetChris/parse-semver@fdf7c91e3c241d139205239b3a48d3e0a530f64c
       - name: Output value_to_parse
         run: echo "${{ steps.parse.outputs.value_to_parse }}"
       - name: Has semver_version?
